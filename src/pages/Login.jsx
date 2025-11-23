@@ -26,7 +26,8 @@ const Login = ({ setIsAuthenticated }) => {
             justifyContent: 'center',
             background: 'var(--color-bg-dark)',
             position: 'relative',
-            overflow: 'hidden'
+            overflow: 'hidden',
+            paddingTop: '80px' // Added padding to account for fixed navbar
         }}>
             {/* Background Glow */}
             <div style={{
