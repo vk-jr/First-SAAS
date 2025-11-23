@@ -41,7 +41,7 @@ const Hero = () => {
     }, [isDragging]);
 
     return (
-        <section style={{
+        <section id="hero" style={{
             minHeight: '100vh',
             paddingTop: '120px',
             paddingBottom: '80px',

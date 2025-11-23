@@ -10,7 +10,7 @@ const Footer = () => {
                     <div>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '20px' }}>
                             <div style={{ width: '32px', height: '32px', background: 'var(--gradient-primary)', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>✨</div>
-                            <span style={{ fontFamily: 'var(--font-heading)', fontSize: '24px', fontWeight: '600' }}>PhotoAI</span>
+                            <span style={{ fontFamily: 'var(--font-heading)', fontSize: '24px', fontWeight: '600' }}>GenAi</span>
                         </div>
                         <p style={{ color: '#9CA3AF', fontSize: '14px', lineHeight: '1.6' }}>
                             Transforming product photography with the power of artificial intelligence.
@@ -41,7 +41,7 @@ const Footer = () => {
                 </div>
 
                 <div style={{ borderTop: '1px solid #374151', paddingTop: '40px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '20px' }}>
-                    <p style={{ color: '#9CA3AF', fontSize: '14px' }}>© 2025 PhotoAI. All rights reserved.</p>
+                    <p style={{ color: '#9CA3AF', fontSize: '14px' }}>© 2025 GenAi. All rights reserved.</p>
                     <div style={{ display: 'flex', gap: '20px' }}>
                         {['Twitter', 'Instagram', 'LinkedIn'].map((social) => (
                             <a key={social} href="#" style={{ color: '#9CA3AF', fontSize: '14px' }}>{social}</a>

@@ -14,7 +14,7 @@ const Pricing = () => {
         },
         {
             name: 'Creator',
-            price: annual ? 19 : 24,
+            price: annual ? 99 : 19,
             description: 'For content creators and sellers',
             features: ['200 credits/month', 'No watermark', 'HD downloads', '50+ templates', 'Priority processing', 'Commercial license'],
             cta: 'Get Creator',
@@ -22,7 +22,7 @@ const Pricing = () => {
         },
         {
             name: 'Business',
-            price: annual ? 49 : 59,
+            price: annual ? 199 : 49,
             description: 'For agencies and power users',
             features: ['1000 credits/month', 'Everything in Creator', 'API access', 'Custom branding', 'Dedicated support', 'Team collaboration'],
             cta: 'Contact Sales',
@@ -34,7 +34,7 @@ const Pricing = () => {
         <section id="pricing" style={{ padding: '100px 0', backgroundColor: '#F9FAFB' }}>
             <div className="container" style={{ maxWidth: '1100px' }}>
                 <div style={{ textAlign: 'center', marginBottom: '60px' }}>
-                    <h2 style={{ fontSize: '36px', fontWeight: '600', marginBottom: '16px' }}>Simple, Transparent Pricing</h2>
+                    <h2 style={{ fontSize: '36px', fontWeight: '600', marginBottom: '16px' }}>Pricing</h2>
 
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '16px', marginTop: '32px' }}>
                         <span style={{ fontWeight: '500', color: !annual ? 'var(--color-text-heading)' : 'var(--color-text-body)' }}>Monthly</span>
@@ -104,7 +104,7 @@ const Pricing = () => {
 
                             <div style={{ display: 'flex', alignItems: 'baseline', marginBottom: '32px' }}>
                                 <span style={{ fontSize: '48px', fontWeight: '700', color: 'var(--color-text-heading)' }}>${plan.price}</span>
-                                <span style={{ fontSize: '16px', color: 'var(--color-text-body)', marginLeft: '4px' }}>/month</span>
+                                <span style={{ fontSize: '16px', color: 'var(--color-text-body)', marginLeft: '4px' }}>/{annual ? 'yr' : 'month'}</span>
                             </div>
 
                             <button style={{

@@ -1,5 +1,4 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
 import watchBefore from '../assets/gallery-watch-before.png';
 import watchAfter from '../assets/gallery-watch-after.png';
 import headphonesBefore from '../assets/gallery-headphones-before.png';
@@ -7,10 +6,10 @@ import headphonesAfter from '../assets/gallery-headphones-after.png';
 import coffeeBefore from '../assets/gallery-coffee-before.png';
 import coffeeAfter from '../assets/gallery-coffee-after.png';
 
-const ResultsGallery = () => {
-    const navigate = useNavigate();
+const Gallery = () => {
+    const [activeFilter, setActiveFilter] = useState('All');
 
-    // Real examples with generated and curated images
+    // All gallery examples with categories
     const allItems = [
         {
             id: 1,
@@ -86,25 +85,74 @@ const ResultsGallery = () => {
         }
     ];
 
-    // Show only first 3 items for the home page preview
-    const items = allItems.slice(0, 3);
+    // Filter items based on active category
+    const filteredItems = activeFilter === 'All'
+        ? allItems
+        : allItems.filter(item => item.category === activeFilter);
+
+    const categories = ['All', 'Fashion', 'Tech', 'Food', 'Beauty', 'Jewelry', 'Home'];
 
     return (
-        <section id="results-gallery" style={{ padding: '100px 0', backgroundColor: 'white', color: '#1F2937' }}>
-            <div className="container">
+        <div style={{ paddingTop: '100px', minHeight: '100vh', backgroundColor: 'white' }}>
+            <div className="container" style={{ padding: '60px 20px' }}>
+                {/* Header */}
                 <div style={{ textAlign: 'center', marginBottom: '60px' }}>
-                    <h2 style={{ fontSize: '36px', fontWeight: '600', marginBottom: '16px', color: '#1F2937' }}>See The Magic</h2>
-                    <p style={{ fontSize: '18px', color: '#6B7280' }}>AI-powered transformations from simple prompts</p>
-                    <p style={{ fontSize: '14px', color: '#9CA3AF', marginTop: '8px' }}>
-                        Each transformation created with just a few words
+                    <h1 style={{
+                        fontSize: '48px',
+                        fontWeight: '700',
+                        marginBottom: '16px',
+                        color: '#1F2937'
+                    }}>
+                        Gallery
+                    </h1>
+                    <p style={{ fontSize: '18px', color: '#6B7280', marginBottom: '40px' }}>
+                        Explore AI-powered transformations across different categories
                     </p>
+
+                    {/* Category Filters */}
+                    <div style={{ display: 'flex', justifyContent: 'center', gap: '12px', flexWrap: 'wrap' }}>
+                        {categories.map(category => (
+                            <button
+                                key={category}
+                                onClick={() => setActiveFilter(category)}
+                                style={{
+                                    padding: '10px 24px',
+                                    borderRadius: '24px',
+                                    fontSize: '14px',
+                                    fontWeight: '600',
+                                    backgroundColor: activeFilter === category ? '#7C3AED' : '#F3F4F6',
+                                    background: activeFilter === category ? 'linear-gradient(135deg, #7C3AED, #EC4899)' : '#F3F4F6',
+                                    color: activeFilter === category ? 'white' : '#374151',
+                                    border: activeFilter === category ? 'none' : '1px solid #E5E7EB',
+                                    cursor: 'pointer',
+                                    transition: 'all 0.3s ease',
+                                    boxShadow: activeFilter === category ? '0 4px 15px rgba(124, 58, 237, 0.4)' : 'none'
+                                }}
+                                onMouseEnter={(e) => {
+                                    if (activeFilter !== category) {
+                                        e.currentTarget.style.backgroundColor = '#E5E7EB';
+                                        e.currentTarget.style.borderColor = '#D1D5DB';
+                                    }
+                                }}
+                                onMouseLeave={(e) => {
+                                    if (activeFilter !== category) {
+                                        e.currentTarget.style.backgroundColor = '#F3F4F6';
+                                        e.currentTarget.style.borderColor = '#E5E7EB';
+                                    }
+                                }}
+                            >
+                                {category}
+                            </button>
+                        ))}
+                    </div>
                 </div>
 
+                {/* Gallery Grid */}
                 <div style={{
                     columnCount: 3,
                     columnGap: '24px'
                 }}>
-                    {items.map((item) => (
+                    {filteredItems.map((item) => (
                         <div
                             key={item.id}
                             style={{
@@ -113,7 +161,7 @@ const ResultsGallery = () => {
                                 position: 'relative',
                                 borderRadius: '16px',
                                 overflow: 'hidden',
-                                border: '2px solid rgba(255,255,255,0.1)',
+                                border: '2px solid #E5E7EB',
                                 transition: 'transform 0.3s ease, box-shadow 0.3s ease',
                                 cursor: 'pointer'
                             }}
@@ -139,7 +187,8 @@ const ResultsGallery = () => {
                                         borderRadius: '6px',
                                         fontSize: '11px',
                                         fontWeight: '600',
-                                        letterSpacing: '0.5px'
+                                        letterSpacing: '0.5px',
+                                        color: 'white'
                                     }}>BEFORE</span>
                                 </div>
                                 <div style={{ flex: 1, position: 'relative' }}>
@@ -153,7 +202,8 @@ const ResultsGallery = () => {
                                         borderRadius: '6px',
                                         fontSize: '11px',
                                         fontWeight: '600',
-                                        letterSpacing: '0.5px'
+                                        letterSpacing: '0.5px',
+                                        color: 'white'
                                     }}>AFTER</span>
                                 </div>
                             </div>
@@ -162,13 +212,13 @@ const ResultsGallery = () => {
                                 bottom: '12px',
                                 left: '50%',
                                 transform: 'translateX(-50%)',
-                                background: 'rgba(255,255,255,0.15)',
+                                background: 'rgba(124, 58, 237, 0.9)',
                                 backdropFilter: 'blur(10px)',
                                 padding: '6px 16px',
                                 borderRadius: '12px',
                                 fontSize: '12px',
                                 fontWeight: '600',
-                                border: '1px solid rgba(255,255,255,0.2)'
+                                color: 'white'
                             }}>
                                 {item.category}
                             </div>
@@ -187,7 +237,8 @@ const ResultsGallery = () => {
                                 textAlign: 'center',
                                 whiteSpace: 'nowrap',
                                 overflow: 'hidden',
-                                textOverflow: 'ellipsis'
+                                textOverflow: 'ellipsis',
+                                color: 'white'
                             }}>
                                 "{item.prompt}"
                             </div>
@@ -195,51 +246,24 @@ const ResultsGallery = () => {
                     ))}
                 </div>
 
-                {/* See More Button */}
-                <div style={{ textAlign: 'center', marginTop: '60px' }}>
-                    <button
-                        onClick={() => {
-                            navigate('/gallery');
-                            window.scrollTo({ top: 0, behavior: 'smooth' });
-                        }}
-                        style={{
-                            background: 'linear-gradient(135deg, #7C3AED, #EC4899)',
-                            color: 'white',
-                            padding: '16px 40px',
-                            borderRadius: '12px',
-                            fontSize: '16px',
-                            fontWeight: '600',
-                            border: 'none',
-                            cursor: 'pointer',
-                            boxShadow: '0 10px 30px rgba(124, 58, 237, 0.3)',
-                            transition: 'all 0.3s ease',
-                            display: 'inline-flex',
-                            alignItems: 'center',
-                            gap: '8px'
-                        }}
-                        onMouseEnter={(e) => {
-                            e.currentTarget.style.transform = 'translateY(-2px)';
-                            e.currentTarget.style.boxShadow = '0 15px 40px rgba(124, 58, 237, 0.4)';
-                        }}
-                        onMouseLeave={(e) => {
-                            e.currentTarget.style.transform = 'translateY(0)';
-                            e.currentTarget.style.boxShadow = '0 10px 30px rgba(124, 58, 237, 0.3)';
-                        }}
-                    >
-                        See More Examples <span>→</span>
-                    </button>
-                </div>
+                {/* Show message if no items in category */}
+                {filteredItems.length === 0 && (
+                    <div style={{ textAlign: 'center', padding: '60px 20px', color: '#6B7280' }}>
+                        <p style={{ fontSize: '18px' }}>No examples found in this category yet.</p>
+                    </div>
+                )}
             </div>
+
             <style>{`
-        @media (max-width: 1024px) {
-          div[style*="columnCount: 3"] { column-count: 2 !important; }
-        }
-        @media (max-width: 640px) {
-          div[style*="columnCount: 3"] { column-count: 1 !important; }
-        }
-      `}</style>
-        </section>
+                @media (max-width: 1024px) {
+                    div[style*="columnCount: 3"] { column-count: 2 !important; }
+                }
+                @media (max-width: 640px) {
+                    div[style*="columnCount: 3"] { column-count: 1 !important; }
+                }
+            `}</style>
+        </div>
     );
 };
 
-export default ResultsGallery;
+export default Gallery;

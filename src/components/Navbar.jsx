@@ -51,26 +51,65 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
                         ✨
                     </div>
                     <span style={{ fontFamily: 'var(--font-heading)', fontSize: '24px', fontWeight: '600', color: 'var(--color-text-heading)' }}>
-                        PhotoAI
+                        GenAi
                     </span>
                 </Link>
 
                 {/* Desktop Nav */}
                 <div style={{ display: 'flex', alignItems: 'center', gap: '32px' }} className="desktop-nav">
-                    {['Features', 'Pricing', 'Gallery', 'API'].map((item) => (
-                        <a key={item} href={`/#${item.toLowerCase()}`} style={{
-                            fontSize: '14px',
-                            fontWeight: '500',
-                            color: 'var(--color-text-body)',
-                            position: 'relative',
-                            transition: 'color 0.2s'
-                        }}
-                            onMouseEnter={(e) => e.target.style.color = 'var(--color-primary-start)'}
-                            onMouseLeave={(e) => e.target.style.color = 'var(--color-text-body)'}
-                        >
-                            {item}
-                        </a>
-                    ))}
+                    {[
+                        { name: 'Home', id: 'hero' },
+                        { name: 'Features', id: 'features' },
+                        { name: 'Pricing', id: 'pricing' },
+                        { name: 'Gallery', id: 'results-gallery' }
+                    ].map((item) => {
+                        const handleClick = (e) => {
+                            e.preventDefault();
+                            // If not on home page, navigate to home first
+                            if (location.pathname !== '/') {
+                                navigate('/');
+                                // Wait for navigation, then scroll
+                                setTimeout(() => {
+                                    const element = document.getElementById(item.id);
+                                    if (element) {
+                                        const yOffset = -80; // Account for fixed navbar
+                                        const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                                        window.scrollTo({ top: y, behavior: 'smooth' });
+                                    }
+                                }, 100);
+                            } else {
+                                // Already on home page, just scroll
+                                const element = document.getElementById(item.id);
+                                if (element) {
+                                    const yOffset = -80; // Account for fixed navbar
+                                    const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                                    window.scrollTo({ top: y, behavior: 'smooth' });
+                                }
+                            }
+                        };
+
+                        return (
+                            <button
+                                key={item.name}
+                                onClick={handleClick}
+                                style={{
+                                    fontSize: '14px',
+                                    fontWeight: '500',
+                                    color: 'var(--color-text-body)',
+                                    position: 'relative',
+                                    transition: 'color 0.2s',
+                                    cursor: 'pointer',
+                                    background: 'none',
+                                    border: 'none',
+                                    padding: 0
+                                }}
+                                onMouseEnter={(e) => e.target.style.color = 'var(--color-primary-start)'}
+                                onMouseLeave={(e) => e.target.style.color = 'var(--color-text-body)'}
+                            >
+                                {item.name}
+                            </button>
+                        );
+                    })}
                 </div>
 
                 {/* Actions */}

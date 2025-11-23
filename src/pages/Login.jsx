@@ -58,7 +58,7 @@ const Login = ({ setIsAuthenticated }) => {
                         <input
                             type="email"
                             placeholder="you@example.com"
-                            defaultValue="demo@photoai.com"
+                            defaultValue="demo@genai.com"
                             style={{
                                 width: '100%',
                                 padding: '12px',

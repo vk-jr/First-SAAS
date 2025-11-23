@@ -5,26 +5,22 @@ const Features = () => {
         {
             title: 'AI Background Removal',
             description: 'Instantly remove messy backgrounds and replace them with professional studio settings. Our advanced AI understands complex edges and transparent objects.',
-            icon: '✂️',
-            image: 'https://placehold.co/600x400/F3F4F6/7C3AED?text=Background+Removal'
+            image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&h=400&fit=crop&q=80'
         },
         {
             title: 'Smart Model Generation',
             description: 'Showcase your products on diverse AI models without hiring talent. Choose from different ages, ethnicities, and styles to match your brand.',
-            icon: '👥',
-            image: 'https://placehold.co/600x400/F3F4F6/EC4899?text=AI+Models'
+            image: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?w=600&h=400&fit=crop&q=80'
         },
         {
             title: 'One-Click Enhancement',
             description: 'Automatically adjust lighting, shadows, and color balance to make your products pop. Get magazine-quality results in seconds.',
-            icon: '⚡',
-            image: 'https://placehold.co/600x400/F3F4F6/3B82F6?text=Enhancement'
+            image: 'https://images.unsplash.com/photo-1460353581641-37baddab0fa2?w=600&h=400&fit=crop&q=80'
         },
         {
             title: 'Batch Processing',
             description: 'Upload hundreds of photos at once and let our AI do the heavy lifting. Perfect for e-commerce catalogs and seasonal collections.',
-            icon: '🚀',
-            image: 'https://placehold.co/600x400/F3F4F6/10B981?text=Batch+Processing'
+            image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&h=400&fit=crop&q=80'
         }
     ];
 
@@ -65,20 +61,6 @@ const Features = () => {
 
                         {/* Text Side */}
                         <div style={{ flex: '1', minWidth: '300px' }}>
-                            <div style={{
-                                width: '64px',
-                                height: '64px',
-                                background: 'var(--bg-subtle)',
-                                borderRadius: '16px',
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                fontSize: '32px',
-                                marginBottom: '24px',
-                                boxShadow: '0 4px 10px rgba(0,0,0,0.05)'
-                            }}>
-                                {feature.icon}
-                            </div>
                             <h3 style={{ fontSize: '32px', fontWeight: '600', marginBottom: '16px' }}>{feature.title}</h3>
                             <p style={{ fontSize: '18px', color: 'var(--color-text-body)', lineHeight: '1.8', marginBottom: '32px' }}>
                                 {feature.description}

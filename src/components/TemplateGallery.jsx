@@ -1,20 +1,105 @@
 import React, { useState } from 'react';
-import templateStudio from '../assets/template-studio.png';
-import templateLifestyle from '../assets/template-lifestyle.png';
-import templateInstagram from '../assets/template-instagram.png';
 
 const TemplateGallery = () => {
     const [activeFilter, setActiveFilter] = useState('All');
 
     const templates = [
-        { id: 1, name: 'Studio Minimal', category: 'Fashion', image: templateStudio, uses: '12.4K' },
-        { id: 2, name: 'Cozy Lifestyle', category: 'Home', image: templateLifestyle, uses: '8.2K' },
-        { id: 3, name: 'Insta Pop', category: 'Beauty', image: templateInstagram, uses: '15.1K' },
-        { id: 4, name: 'E-commerce Clean', category: 'Tech', image: templateStudio, uses: '9.8K' }, // Reusing studio image
-        { id: 5, name: 'Summer Vibes', category: 'Fashion', image: templateLifestyle, uses: '5.6K' },
-        { id: 6, name: 'Dark Mode', category: 'Tech', image: templateInstagram, uses: '3.2K' },
-        { id: 7, name: 'Kitchen Scene', category: 'Food', image: templateLifestyle, uses: '4.1K' },
-        { id: 8, name: 'Luxury', category: 'Jewelry', image: templateStudio, uses: '7.9K' },
+        {
+            id: 1,
+            name: 'Studio Minimal',
+            category: 'Fashion',
+            image: 'https://images.unsplash.com/photo-1556906781-9a412961c28c?w=350&h=400&fit=crop',
+            uses: '12.4K',
+            description: 'Clean white studio backdrop'
+        },
+        {
+            id: 2,
+            name: 'Cozy Lifestyle',
+            category: 'Home',
+            image: 'https://images.unsplash.com/photo-1556909212-d5b604d0c90d?w=350&h=400&fit=crop',
+            uses: '8.2K',
+            description: 'Warm home setting'
+        },
+        {
+            id: 3,
+            name: 'Insta Pop',
+            category: 'Beauty',
+            image: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=350&h=400&fit=crop',
+            uses: '15.1K',
+            description: 'Vibrant social media style'
+        },
+        {
+            id: 4,
+            name: 'E-commerce Clean',
+            category: 'Tech',
+            image: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=350&h=400&fit=crop',
+            uses: '9.8K',
+            description: 'Professional product shot'
+        },
+        {
+            id: 5,
+            name: 'Summer Vibes',
+            category: 'Fashion',
+            image: 'https://images.unsplash.com/photo-1549298916-b41d501d3772?w=350&h=400&fit=crop',
+            uses: '5.6K',
+            description: 'Outdoorsy casual aesthetic'
+        },
+        {
+            id: 6,
+            name: 'Dark Mode',
+            category: 'Tech',
+            image: 'https://images.unsplash.com/photo-1583394838336-acd977736f90?w=350&h=400&fit=crop',
+            uses: '3.2K',
+            description: 'Sleek dark background'
+        },
+        {
+            id: 7,
+            name: 'Kitchen Scene',
+            category: 'Food',
+            image: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=350&h=400&fit=crop',
+            uses: '4.1K',
+            description: 'Rustic cafe atmosphere'
+        },
+        {
+            id: 8,
+            name: 'Luxury',
+            category: 'Jewelry',
+            image: 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=350&h=400&fit=crop',
+            uses: '7.9K',
+            description: 'Premium elegant setting'
+        },
+        {
+            id: 9,
+            name: 'Urban Street',
+            category: 'Fashion',
+            image: 'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=350&h=400&fit=crop',
+            uses: '6.3K',
+            description: 'Streetwear aesthetic'
+        },
+        {
+            id: 10,
+            name: 'Botanical',
+            category: 'Beauty',
+            image: 'https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=350&h=400&fit=crop',
+            uses: '5.2K',
+            description: 'Natural organic feel'
+        },
+        {
+            id: 11,
+            name: 'Minimalist Desk',
+            category: 'Tech',
+            image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=350&h=400&fit=crop',
+            uses: '4.7K',
+            description: 'Modern workspace vibe'
+        },
+        {
+            id: 12,
+            name: 'Artisan',
+            category: 'Food',
+            image: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=350&h=400&fit=crop',
+            uses: '3.8K',
+            description: 'Handcrafted aesthetic'
+        },
     ];
 
     const filters = ['All', 'Fashion', 'Beauty', 'Tech', 'Food', 'Jewelry', 'Home'];
@@ -107,6 +192,7 @@ const TemplateGallery = () => {
                                 color: 'white'
                             }}>
                                 <h3 style={{ fontSize: '18px', fontWeight: '600', marginBottom: '4px', color: 'white' }}>{template.name}</h3>
+                                <p style={{ fontSize: '11px', opacity: 0.9, marginBottom: '4px' }}>{template.description}</p>
                                 <p style={{ fontSize: '12px', opacity: 0.8 }}>Used {template.uses} times</p>
                             </div>
 
