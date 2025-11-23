@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import logo from '../assets/logo.png';
 
 const Login = ({ setIsAuthenticated }) => {
     const navigate = useNavigate();
@@ -23,38 +24,43 @@ const Login = ({ setIsAuthenticated }) => {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            background: 'var(--color-bg-subtle)'
+            background: 'var(--color-bg-dark)',
+            position: 'relative',
+            overflow: 'hidden'
         }}>
+            {/* Background Glow */}
             <div style={{
-                background: 'white',
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                width: '600px',
+                height: '600px',
+                background: 'radial-gradient(circle, rgba(124, 58, 237, 0.15) 0%, rgba(0,0,0,0) 70%)',
+                pointerEvents: 'none',
+                zIndex: 0
+            }} />
+
+            <div style={{
+                background: 'rgba(255, 255, 255, 0.03)',
+                backdropFilter: 'blur(20px)',
                 padding: '40px',
                 borderRadius: '24px',
-                boxShadow: 'var(--shadow-soft)',
+                border: '1px solid rgba(255, 255, 255, 0.08)',
                 width: '100%',
-                maxWidth: '400px'
+                maxWidth: '400px',
+                position: 'relative',
+                zIndex: 1
             }}>
                 <div style={{ textAlign: 'center', marginBottom: '32px' }}>
-                    <div style={{
-                        width: '48px',
-                        height: '48px',
-                        background: 'var(--gradient-primary)',
-                        borderRadius: '12px',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        color: 'white',
-                        fontSize: '24px',
-                        margin: '0 auto 16px'
-                    }}>
-                        ✨
-                    </div>
-                    <h1 style={{ fontSize: '24px', fontWeight: '700' }}>Welcome Back</h1>
+                    <img src={logo} alt="GenAi Logo" style={{ height: '48px', objectFit: 'contain', marginBottom: '16px' }} />
+                    <h1 style={{ fontSize: '24px', fontWeight: '700', color: 'var(--color-text-heading)' }}>Welcome Back</h1>
                     <p style={{ color: 'var(--color-text-body)' }}>Sign in to continue creating</p>
                 </div>
 
                 <form onSubmit={handleLogin}>
                     <div style={{ marginBottom: '20px' }}>
-                        <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', marginBottom: '8px' }}>Email</label>
+                        <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', marginBottom: '8px', color: 'var(--color-text-heading)' }}>Email</label>
                         <input
                             type="email"
                             placeholder="you@example.com"
@@ -63,14 +69,19 @@ const Login = ({ setIsAuthenticated }) => {
                                 width: '100%',
                                 padding: '12px',
                                 borderRadius: '8px',
-                                border: '1px solid #E5E7EB',
+                                border: '1px solid rgba(255, 255, 255, 0.1)',
+                                background: 'rgba(255, 255, 255, 0.05)',
+                                color: 'var(--color-text-heading)',
                                 fontSize: '16px',
-                                outline: 'none'
+                                outline: 'none',
+                                transition: 'border-color 0.2s'
                             }}
+                            onFocus={(e) => e.target.style.borderColor = 'var(--color-primary-start)'}
+                            onBlur={(e) => e.target.style.borderColor = 'rgba(255, 255, 255, 0.1)'}
                         />
                     </div>
                     <div style={{ marginBottom: '32px' }}>
-                        <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', marginBottom: '8px' }}>Password</label>
+                        <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', marginBottom: '8px', color: 'var(--color-text-heading)' }}>Password</label>
                         <input
                             type="password"
                             placeholder="••••••••"
@@ -79,10 +90,15 @@ const Login = ({ setIsAuthenticated }) => {
                                 width: '100%',
                                 padding: '12px',
                                 borderRadius: '8px',
-                                border: '1px solid #E5E7EB',
+                                border: '1px solid rgba(255, 255, 255, 0.1)',
+                                background: 'rgba(255, 255, 255, 0.05)',
+                                color: 'var(--color-text-heading)',
                                 fontSize: '16px',
-                                outline: 'none'
+                                outline: 'none',
+                                transition: 'border-color 0.2s'
                             }}
+                            onFocus={(e) => e.target.style.borderColor = 'var(--color-primary-start)'}
+                            onBlur={(e) => e.target.style.borderColor = 'rgba(255, 255, 255, 0.1)'}
                         />
                     </div>
                     <button
@@ -97,8 +113,13 @@ const Login = ({ setIsAuthenticated }) => {
                             fontSize: '16px',
                             fontWeight: '600',
                             opacity: loading ? 0.7 : 1,
-                            cursor: loading ? 'not-allowed' : 'pointer'
+                            cursor: loading ? 'not-allowed' : 'none', // Using 'none' for custom cursor, or 'pointer' if we want standard behavior (but we hid it globally)
+                            border: 'none',
+                            boxShadow: '0 4px 14px rgba(124, 58, 237, 0.3)',
+                            transition: 'transform 0.2s'
                         }}
+                        onMouseEnter={(e) => !loading && (e.target.style.transform = 'translateY(-2px)')}
+                        onMouseLeave={(e) => !loading && (e.target.style.transform = 'translateY(0)')}
                     >
                         {loading ? 'Signing in...' : 'Sign In'}
                     </button>

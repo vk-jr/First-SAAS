@@ -1,4 +1,5 @@
 import React from 'react';
+import logo from '../assets/logo.png';
 
 const Footer = () => {
     return (
@@ -8,8 +9,7 @@ const Footer = () => {
                     {/* Brand */}
                     <div>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '20px' }}>
-                            <div style={{ width: '32px', height: '32px', background: 'var(--gradient-primary)', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white' }}>✨</div>
-                            <span style={{ fontFamily: 'var(--font-heading)', fontSize: '24px', fontWeight: '600', color: 'var(--color-text-heading)' }}>GenAi</span>
+                            <img src={logo} alt="GenAi Logo" style={{ height: '32px', objectFit: 'contain' }} />
                         </div>
                         <p style={{ color: 'var(--color-text-body)', fontSize: '14px', lineHeight: '1.6' }}>
                             Transforming product photography with the power of artificial intelligence.

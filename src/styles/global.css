@@ -4,6 +4,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    cursor: none;
+    /* Hide default cursor globally */
 }
 
 body {
@@ -13,6 +15,7 @@ body {
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
+    cursor: none;
 }
 
 h1,
@@ -28,7 +31,8 @@ h6 {
 
 button {
     font-family: var(--font-sans);
-    cursor: pointer;
+    cursor: none;
+    /* Ensure buttons also hide cursor */
     border: none;
     background: none;
     transition: transform var(--transition-default), box-shadow var(--transition-default);
@@ -42,6 +46,8 @@ a {
     text-decoration: none;
     color: inherit;
     transition: color var(--transition-default);
+    cursor: none;
+    /* Ensure links also hide cursor */
 }
 
 /* Utilities */

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
+import logo from '../assets/logo.png';
 
 const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
     const [scrolled, setScrolled] = useState(false);
@@ -56,22 +57,7 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
         }}>
             {/* Logo */}
             <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer', textDecoration: 'none' }}>
-                <div style={{
-                    width: '36px',
-                    height: '36px',
-                    background: 'var(--gradient-primary)',
-                    borderRadius: '50%',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    color: 'white',
-                    fontSize: '18px'
-                }}>
-                    ✨
-                </div>
-                <span style={{ fontFamily: 'var(--font-heading)', fontSize: '20px', fontWeight: '600', color: 'var(--color-text-heading)' }}>
-                    GenAi
-                </span>
+                <img src={logo} alt="GenAi Logo" style={{ height: '24px', objectFit: 'contain' }} />
             </Link>
 
             {/* Desktop Nav */}
