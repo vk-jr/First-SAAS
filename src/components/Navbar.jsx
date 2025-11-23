@@ -57,7 +57,7 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
         }}>
             {/* Logo */}
             <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer', textDecoration: 'none' }}>
-                <img src={logo} alt="GenAi Logo" style={{ height: '24px', objectFit: 'contain' }} />
+                <img src={logo} alt="GenAi Logo" style={{ height: '48px', objectFit: 'contain' }} />
             </Link>
 
             {/* Desktop Nav */}

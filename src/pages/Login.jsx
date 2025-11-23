@@ -53,7 +53,7 @@ const Login = ({ setIsAuthenticated }) => {
                 zIndex: 1
             }}>
                 <div style={{ textAlign: 'center', marginBottom: '32px' }}>
-                    <img src={logo} alt="GenAi Logo" style={{ height: '48px', objectFit: 'contain', marginBottom: '16px' }} />
+                    <img src={logo} alt="GenAi Logo" style={{ height: '80px', objectFit: 'contain', marginBottom: '16px' }} />
                     <h1 style={{ fontSize: '24px', fontWeight: '700', color: 'var(--color-text-heading)' }}>Welcome Back</h1>
                     <p style={{ color: 'var(--color-text-body)' }}>Sign in to continue creating</p>
                 </div>

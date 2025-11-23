@@ -9,7 +9,7 @@ const Footer = () => {
                     {/* Brand */}
                     <div>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '20px' }}>
-                            <img src={logo} alt="GenAi Logo" style={{ height: '32px', objectFit: 'contain' }} />
+                            <img src={logo} alt="GenAi Logo" style={{ height: '60px', objectFit: 'contain' }} />
                         </div>
                         <p style={{ color: 'var(--color-text-body)', fontSize: '14px', lineHeight: '1.6' }}>
                             Transforming product photography with the power of artificial intelligence.
