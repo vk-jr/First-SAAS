@@ -90,12 +90,12 @@ const ResultsGallery = () => {
     const items = allItems.slice(0, 3);
 
     return (
-        <section id="results-gallery" style={{ padding: '100px 0', backgroundColor: 'white', color: '#1F2937' }}>
+        <section id="results-gallery" style={{ padding: '100px 0', backgroundColor: 'var(--color-bg-dark)', color: 'var(--color-text-heading)' }}>
             <div className="container">
                 <div style={{ textAlign: 'center', marginBottom: '60px' }}>
-                    <h2 style={{ fontSize: '36px', fontWeight: '600', marginBottom: '16px', color: '#1F2937' }}>See The Magic</h2>
-                    <p style={{ fontSize: '18px', color: '#6B7280' }}>AI-powered transformations from simple prompts</p>
-                    <p style={{ fontSize: '14px', color: '#9CA3AF', marginTop: '8px' }}>
+                    <h2 style={{ fontSize: '36px', fontWeight: '600', marginBottom: '16px', color: 'var(--color-text-heading)' }}>See The Magic</h2>
+                    <p style={{ fontSize: '18px', color: 'var(--color-text-body)' }}>AI-powered transformations from simple prompts</p>
+                    <p style={{ fontSize: '14px', color: 'var(--color-text-body)', marginTop: '8px' }}>
                         Each transformation created with just a few words
                     </p>
                 </div>
@@ -113,117 +113,107 @@ const ResultsGallery = () => {
                                 position: 'relative',
                                 borderRadius: '16px',
                                 overflow: 'hidden',
-                                border: '2px solid rgba(255,255,255,0.1)',
+                                border: '2px solid var(--color-border)',
                                 transition: 'transform 0.3s ease, box-shadow 0.3s ease',
                                 cursor: 'pointer'
                             }}
                             className="result-card"
-                            onMouseEnter={(e) => {
-                                e.currentTarget.style.transform = 'translateY(-4px)';
-                                e.currentTarget.style.boxShadow = '0 20px 40px rgba(124, 58, 237, 0.3)';
-                            }}
-                            onMouseLeave={(e) => {
-                                e.currentTarget.style.transform = 'translateY(0)';
-                                e.currentTarget.style.boxShadow = 'none';
-                            }}
                         >
-                            <div style={{ display: 'flex', height: item.height }}>
-                                <div style={{ flex: 1, position: 'relative' }}>
-                                    <img src={item.before} alt="Before" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                                    <span style={{
-                                        position: 'absolute',
-                                        top: '10px',
-                                        left: '10px',
-                                        background: 'rgba(0,0,0,0.7)',
-                                        padding: '6px 12px',
-                                        borderRadius: '6px',
-                                        fontSize: '11px',
-                                        fontWeight: '600',
-                                        letterSpacing: '0.5px'
-                                    }}>BEFORE</span>
-                                </div>
-                                <div style={{ flex: 1, position: 'relative' }}>
-                                    <img src={item.after} alt="After" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                                    <span style={{
-                                        position: 'absolute',
-                                        top: '10px',
-                                        right: '10px',
-                                        background: 'linear-gradient(135deg, #7C3AED, #DB2777)',
-                                        padding: '6px 12px',
-                                        borderRadius: '6px',
-                                        fontSize: '11px',
-                                        fontWeight: '600',
-                                        letterSpacing: '0.5px'
-                                    }}>AFTER</span>
-                                </div>
-                            </div>
                             <div style={{
-                                position: 'absolute',
-                                bottom: '12px',
-                                left: '50%',
-                                transform: 'translateX(-50%)',
-                                background: 'rgba(255,255,255,0.15)',
-                                backdropFilter: 'blur(10px)',
-                                padding: '6px 16px',
-                                borderRadius: '12px',
-                                fontSize: '12px',
-                                fontWeight: '600',
-                                border: '1px solid rgba(255,255,255,0.2)'
-                            }}>
-                                {item.category}
-                            </div>
-                            <div style={{
-                                position: 'absolute',
-                                top: '50%',
-                                left: '50%',
-                                transform: 'translate(-50%, -50%)',
-                                background: 'rgba(124, 58, 237, 0.95)',
-                                backdropFilter: 'blur(4px)',
-                                padding: '8px 14px',
-                                borderRadius: '8px',
-                                fontSize: '11px',
-                                fontWeight: '500',
-                                maxWidth: '80%',
-                                textAlign: 'center',
-                                whiteSpace: 'nowrap',
+                                position: 'relative',
+                                borderRadius: '24px',
                                 overflow: 'hidden',
-                                textOverflow: 'ellipsis'
+                                marginBottom: '20px',
+                                boxShadow: 'var(--shadow-soft)',
+                                border: '1px solid var(--color-border)'
                             }}>
-                                "{item.prompt}"
+                                {/* Image container */}
+                                <div style={{ position: 'relative', aspectRatio: '3/4' }}>
+                                    {/* After Image */}
+                                    <img
+                                        src={item.after}
+                                        alt={`Generated ${item.category}`}
+                                        style={{
+                                            width: '100%',
+                                            height: '100%',
+                                            objectFit: 'cover',
+                                            display: 'block'
+                                        }}
+                                    />
+
+                                    {/* Before Image Overlay (Small) */}
+                                    <div style={{
+                                        position: 'absolute',
+                                        bottom: '16px',
+                                        left: '16px',
+                                        width: '80px',
+                                        height: '80px',
+                                        borderRadius: '12px',
+                                        overflow: 'hidden',
+                                        border: '2px solid white',
+                                        boxShadow: '0 4px 12px rgba(0,0,0,0.2)'
+                                    }}>
+                                        <img
+                                            src={item.before}
+                                            alt="Original"
+                                            style={{
+                                                width: '100%',
+                                                height: '100%',
+                                                objectFit: 'cover'
+                                            }}
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
+                                    <span style={{
+                                        fontSize: '12px',
+                                        fontWeight: '600',
+                                        color: 'var(--color-primary-start)',
+                                        textTransform: 'uppercase',
+                                        letterSpacing: '1px'
+                                    }}>
+                                        {item.category}
+                                    </span>
+                                </div>
+                                <p style={{ fontSize: '16px', color: 'var(--color-text-heading)', fontWeight: '500' }}>
+                                    "{item.prompt}"
+                                </p>
                             </div>
                         </div>
                     ))}
                 </div>
 
                 {/* See More Button */}
-                <div style={{ textAlign: 'center', marginTop: '60px' }}>
+                <div style={{ textAlign: 'center', marginTop: '80px' }}>
                     <button
                         onClick={() => {
                             navigate('/gallery');
                             window.scrollTo({ top: 0, behavior: 'smooth' });
                         }}
                         style={{
-                            background: 'linear-gradient(135deg, #7C3AED, #EC4899)',
-                            color: 'white',
+                            background: 'transparent',
+                            color: 'var(--color-text-heading)',
                             padding: '16px 40px',
-                            borderRadius: '12px',
+                            borderRadius: 'var(--radius-full)',
                             fontSize: '16px',
                             fontWeight: '600',
-                            border: 'none',
+                            border: '1px solid var(--color-border)',
                             cursor: 'pointer',
-                            boxShadow: '0 10px 30px rgba(124, 58, 237, 0.3)',
-                            transition: 'all 0.3s ease',
+                            transition: 'all 0.3s',
                             display: 'inline-flex',
                             alignItems: 'center',
-                            gap: '8px'
+                            gap: '12px'
                         }}
                         onMouseEnter={(e) => {
-                            e.currentTarget.style.transform = 'translateY(-2px)';
-                            e.currentTarget.style.boxShadow = '0 15px 40px rgba(124, 58, 237, 0.4)';
+                            e.currentTarget.style.borderColor = 'var(--color-primary-start)';
+                            e.currentTarget.style.color = 'var(--color-primary-start)';
                         }}
                         onMouseLeave={(e) => {
-                            e.currentTarget.style.transform = 'translateY(0)';
-                            e.currentTarget.style.boxShadow = '0 10px 30px rgba(124, 58, 237, 0.3)';
+                            e.currentTarget.style.borderColor = 'var(--color-border)';
+                            e.currentTarget.style.color = 'var(--color-text-heading)';
                         }}
                     >
                         See More Examples <span>→</span>
@@ -231,13 +221,13 @@ const ResultsGallery = () => {
                 </div>
             </div>
             <style>{`
-        @media (max-width: 1024px) {
-          div[style*="columnCount: 3"] { column-count: 2 !important; }
-        }
-        @media (max-width: 640px) {
-          div[style*="columnCount: 3"] { column-count: 1 !important; }
-        }
-      `}</style>
+                @media (max-width: 1024px) {
+                    div[style*="columnCount: 3"] { column-count: 2 !important; }
+                }
+                @media (max-width: 640px) {
+                    div[style*="columnCount: 3"] { column-count: 1 !important; }
+                }
+            `}</style>
         </section>
     );
 };

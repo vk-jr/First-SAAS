@@ -93,58 +93,46 @@ const Gallery = () => {
     const categories = ['All', 'Fashion', 'Tech', 'Food', 'Beauty', 'Jewelry', 'Home'];
 
     return (
-        <div style={{ paddingTop: '100px', minHeight: '100vh', backgroundColor: 'white' }}>
-            <div className="container" style={{ padding: '60px 20px' }}>
-                {/* Header */}
+        <div style={{ paddingTop: '100px', minHeight: '100vh', backgroundColor: 'var(--color-bg-dark)' }}>
+            <div className="container">
                 <div style={{ textAlign: 'center', marginBottom: '60px' }}>
-                    <h1 style={{
-                        fontSize: '48px',
-                        fontWeight: '700',
-                        marginBottom: '16px',
-                        color: '#1F2937'
-                    }}>
-                        Gallery
-                    </h1>
-                    <p style={{ fontSize: '18px', color: '#6B7280', marginBottom: '40px' }}>
-                        Explore AI-powered transformations across different categories
-                    </p>
+                    <h1 style={{ fontSize: '48px', fontWeight: '700', marginBottom: '16px', color: 'var(--color-text-heading)', letterSpacing: '-1px' }}>Inspiration Gallery</h1>
+                    <p style={{ fontSize: '18px', color: 'var(--color-text-body)' }}>Explore what's possible with AI-powered photography</p>
+                </div>
 
-                    {/* Category Filters */}
-                    <div style={{ display: 'flex', justifyContent: 'center', gap: '12px', flexWrap: 'wrap' }}>
-                        {categories.map(category => (
-                            <button
-                                key={category}
-                                onClick={() => setActiveFilter(category)}
-                                style={{
-                                    padding: '10px 24px',
-                                    borderRadius: '24px',
-                                    fontSize: '14px',
-                                    fontWeight: '600',
-                                    backgroundColor: activeFilter === category ? '#7C3AED' : '#F3F4F6',
-                                    background: activeFilter === category ? 'linear-gradient(135deg, #7C3AED, #EC4899)' : '#F3F4F6',
-                                    color: activeFilter === category ? 'white' : '#374151',
-                                    border: activeFilter === category ? 'none' : '1px solid #E5E7EB',
-                                    cursor: 'pointer',
-                                    transition: 'all 0.3s ease',
-                                    boxShadow: activeFilter === category ? '0 4px 15px rgba(124, 58, 237, 0.4)' : 'none'
-                                }}
-                                onMouseEnter={(e) => {
-                                    if (activeFilter !== category) {
-                                        e.currentTarget.style.backgroundColor = '#E5E7EB';
-                                        e.currentTarget.style.borderColor = '#D1D5DB';
-                                    }
-                                }}
-                                onMouseLeave={(e) => {
-                                    if (activeFilter !== category) {
-                                        e.currentTarget.style.backgroundColor = '#F3F4F6';
-                                        e.currentTarget.style.borderColor = '#E5E7EB';
-                                    }
-                                }}
-                            >
-                                {category}
-                            </button>
-                        ))}
-                    </div>
+                {/* Category Filters */}
+                <div style={{ display: 'flex', justifyContent: 'center', gap: '12px', marginBottom: '60px', flexWrap: 'wrap' }}>
+                    {categories.map(category => (
+                        <button
+                            key={category}
+                            onClick={() => setActiveFilter(category)}
+                            style={{
+                                padding: '10px 24px',
+                                borderRadius: '20px',
+                                border: activeFilter === category ? 'none' : '1px solid var(--color-border)',
+                                background: activeFilter === category ? 'var(--color-primary-start)' : 'transparent',
+                                color: activeFilter === category ? 'white' : 'var(--color-text-body)',
+                                fontSize: '14px',
+                                fontWeight: '600',
+                                cursor: 'pointer',
+                                transition: 'all 0.2s'
+                            }}
+                            onMouseEnter={(e) => {
+                                if (activeFilter !== category) {
+                                    e.target.style.borderColor = 'var(--color-primary-start)';
+                                    e.target.style.color = 'var(--color-text-heading)';
+                                }
+                            }}
+                            onMouseLeave={(e) => {
+                                if (activeFilter !== category) {
+                                    e.target.style.borderColor = 'var(--color-border)';
+                                    e.target.style.color = 'var(--color-text-body)';
+                                }
+                            }}
+                        >
+                            {category}
+                        </button>
+                    ))}
                 </div>
 
                 {/* Gallery Grid */}
@@ -161,14 +149,14 @@ const Gallery = () => {
                                 position: 'relative',
                                 borderRadius: '16px',
                                 overflow: 'hidden',
-                                border: '2px solid #E5E7EB',
+                                border: '2px solid var(--color-border)',
                                 transition: 'transform 0.3s ease, box-shadow 0.3s ease',
                                 cursor: 'pointer'
                             }}
                             className="result-card"
                             onMouseEnter={(e) => {
                                 e.currentTarget.style.transform = 'translateY(-4px)';
-                                e.currentTarget.style.boxShadow = '0 20px 40px rgba(124, 58, 237, 0.3)';
+                                e.currentTarget.style.boxShadow = 'var(--shadow-hover)';
                             }}
                             onMouseLeave={(e) => {
                                 e.currentTarget.style.transform = 'translateY(0)';
@@ -197,7 +185,7 @@ const Gallery = () => {
                                         position: 'absolute',
                                         top: '10px',
                                         right: '10px',
-                                        background: 'linear-gradient(135deg, #7C3AED, #DB2777)',
+                                        background: 'var(--gradient-primary)',
                                         padding: '6px 12px',
                                         borderRadius: '6px',
                                         fontSize: '11px',
@@ -212,13 +200,14 @@ const Gallery = () => {
                                 bottom: '12px',
                                 left: '50%',
                                 transform: 'translateX(-50%)',
-                                background: 'rgba(124, 58, 237, 0.9)',
+                                background: 'rgba(17, 17, 17, 0.8)',
                                 backdropFilter: 'blur(10px)',
                                 padding: '6px 16px',
                                 borderRadius: '12px',
                                 fontSize: '12px',
                                 fontWeight: '600',
-                                color: 'white'
+                                color: 'white',
+                                border: '1px solid rgba(255,255,255,0.1)'
                             }}>
                                 {item.category}
                             </div>
@@ -227,7 +216,7 @@ const Gallery = () => {
                                 top: '50%',
                                 left: '50%',
                                 transform: 'translate(-50%, -50%)',
-                                background: 'rgba(124, 58, 237, 0.95)',
+                                background: 'rgba(140, 130, 255, 0.95)',
                                 backdropFilter: 'blur(4px)',
                                 padding: '8px 14px',
                                 borderRadius: '8px',
@@ -248,7 +237,7 @@ const Gallery = () => {
 
                 {/* Show message if no items in category */}
                 {filteredItems.length === 0 && (
-                    <div style={{ textAlign: 'center', padding: '60px 20px', color: '#6B7280' }}>
+                    <div style={{ textAlign: 'center', padding: '60px 20px', color: 'var(--color-text-body)' }}>
                         <p style={{ fontSize: '18px' }}>No examples found in this category yet.</p>
                     </div>
                 )}

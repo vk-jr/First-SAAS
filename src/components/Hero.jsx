@@ -1,8 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import productRaw from '../assets/product-raw.png';
 import productPro from '../assets/product-pro.png';
 
 const Hero = () => {
+    const navigate = useNavigate();
     const [sliderPosition, setSliderPosition] = useState(50);
     const [isDragging, setIsDragging] = useState(false);
     const containerRef = useRef(null);
@@ -48,7 +50,8 @@ const Hero = () => {
             display: 'flex',
             alignItems: 'center',
             position: 'relative',
-            overflow: 'hidden'
+            overflow: 'hidden',
+            backgroundColor: 'var(--color-bg-dark)'
         }}>
             {/* Background Elements */}
             <div style={{
@@ -57,51 +60,41 @@ const Hero = () => {
                 left: '10%',
                 width: '400px',
                 height: '400px',
-                background: 'radial-gradient(circle, rgba(124, 58, 237, 0.15) 0%, rgba(0,0,0,0) 70%)',
+                background: 'radial-gradient(circle, rgba(140, 130, 255, 0.1) 0%, rgba(0,0,0,0) 70%)',
                 filter: 'blur(60px)',
-                zIndex: -1
-            }} />
-            <div style={{
-                position: 'absolute',
-                bottom: '10%',
-                right: '5%',
-                width: '500px',
-                height: '500px',
-                background: 'radial-gradient(circle, rgba(236, 72, 153, 0.15) 0%, rgba(0,0,0,0) 70%)',
-                filter: 'blur(80px)',
-                zIndex: -1
+                zIndex: 0
             }} />
 
-            <div className="container" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '60px', alignItems: 'center' }}>
+            <div className="container" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '60px', alignItems: 'center', position: 'relative', zIndex: 1 }}>
 
                 {/* Left Column: Text */}
                 <div style={{ maxWidth: '600px' }}>
                     <div style={{
                         color: 'var(--color-accent)',
-                        fontSize: '12px',
+                        fontSize: '14px',
                         fontWeight: '700',
-                        letterSpacing: '2px',
+                        letterSpacing: '4px',
                         textTransform: 'uppercase',
-                        marginBottom: '16px'
+                        marginBottom: '24px'
                     }}>
                         AI-Powered Photo Magic
                     </div>
                     <h1 style={{
-                        fontSize: 'clamp(40px, 5vw, 64px)',
+                        fontSize: 'clamp(48px, 6vw, 80px)',
                         fontWeight: '700',
                         lineHeight: '1.1',
-                        marginBottom: '24px',
-                        background: 'var(--gradient-primary)',
-                        WebkitBackgroundClip: 'text',
-                        WebkitTextFillColor: 'transparent'
+                        marginBottom: '32px',
+                        color: 'var(--color-text-heading)',
+                        letterSpacing: '-2px'
                     }}>
-                        Transform Product Photos Into Viral Content
+                        Transform Product Photos Into <span style={{ color: 'var(--color-primary-start)' }}>Viral Content</span>
                     </h1>
                     <p style={{
-                        fontSize: '18px',
+                        fontSize: '20px',
                         color: 'var(--color-text-body)',
-                        marginBottom: '40px',
-                        maxWidth: '500px'
+                        marginBottom: '48px',
+                        maxWidth: '500px',
+                        lineHeight: '1.6'
                     }}>
                         Generate professional product photos with AI models, studio backgrounds, and perfect lighting in seconds. No photographer needed.
                     </p>
@@ -119,22 +112,35 @@ const Hero = () => {
                             alignItems: 'center',
                             gap: '8px',
                             boxShadow: '0 10px 25px rgba(236, 72, 153, 0.3)',
-                            transition: 'transform 0.2s'
+                            transition: 'transform 0.2s',
+                            border: 'none',
+                            cursor: 'pointer'
                         }}
                             onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-2px)'}
                             onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}
                         >
-                            Upload Your Product <span>→</span>
+                            Start <span>→</span>
                         </button>
-                        <a href="#examples" style={{
-                            color: 'var(--color-primary-start)',
-                            fontWeight: '600',
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '4px'
-                        }}>
-                            See Examples <span>↓</span>
-                        </a>
+                        <button
+                            onClick={() => {
+                                navigate('/gallery');
+                                window.scrollTo({ top: 0, behavior: 'smooth' });
+                            }}
+                            style={{
+                                background: 'none',
+                                border: 'none',
+                                padding: 0,
+                                color: 'var(--color-primary-start)',
+                                fontWeight: '600',
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '4px',
+                                cursor: 'pointer',
+                                fontSize: '16px'
+                            }}
+                        >
+                            See Examples <span>→</span>
+                        </button>
                     </div>
 
                     <div style={{ marginTop: '40px', display: 'flex', alignItems: 'center', gap: '20px', fontSize: '14px', color: 'var(--color-text-body)' }}>

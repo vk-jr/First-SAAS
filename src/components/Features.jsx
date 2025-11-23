@@ -25,7 +25,7 @@ const Features = () => {
     ];
 
     return (
-        <section id="features" style={{ padding: '100px 0', backgroundColor: 'white' }}>
+        <section id="features" style={{ padding: '120px 0', backgroundColor: 'var(--color-bg-dark)' }}>
             <div className="container">
                 {features.map((feature, index) => (
                     <div
@@ -35,7 +35,7 @@ const Features = () => {
                             flexDirection: index % 2 === 0 ? 'row' : 'row-reverse',
                             alignItems: 'center',
                             gap: '80px',
-                            marginBottom: index === features.length - 1 ? 0 : '100px',
+                            marginBottom: index === features.length - 1 ? 0 : '120px',
                             flexWrap: 'wrap'
                         }}
                     >
@@ -46,7 +46,8 @@ const Features = () => {
                                 overflow: 'hidden',
                                 boxShadow: 'var(--shadow-soft)',
                                 transform: index % 2 === 0 ? 'rotate(-2deg)' : 'rotate(2deg)',
-                                transition: 'transform 0.3s'
+                                transition: 'transform 0.3s',
+                                border: '1px solid var(--color-border)'
                             }}
                                 onMouseEnter={(e) => e.currentTarget.style.transform = 'rotate(0)'}
                                 onMouseLeave={(e) => e.currentTarget.style.transform = index % 2 === 0 ? 'rotate(-2deg)' : 'rotate(2deg)'}
@@ -54,14 +55,14 @@ const Features = () => {
                                 <img
                                     src={feature.image}
                                     alt={feature.title}
-                                    style={{ width: '100%', height: 'auto', display: 'block' }}
+                                    style={{ width: '100%', height: 'auto', display: 'block', filter: 'grayscale(20%) contrast(110%)' }}
                                 />
                             </div>
                         </div>
 
                         {/* Text Side */}
                         <div style={{ flex: '1', minWidth: '300px' }}>
-                            <h3 style={{ fontSize: '32px', fontWeight: '600', marginBottom: '16px' }}>{feature.title}</h3>
+                            <h3 style={{ fontSize: '40px', fontWeight: '700', marginBottom: '24px', color: 'var(--color-text-heading)', letterSpacing: '-1px' }}>{feature.title}</h3>
                             <p style={{ fontSize: '18px', color: 'var(--color-text-body)', lineHeight: '1.8', marginBottom: '32px' }}>
                                 {feature.description}
                             </p>
